@@ -10,7 +10,7 @@ public class Array2d {
         System.out.println("Enter the array elements for A");
         int[][] A = new int[row][col];
         int[][] B = new int[row][col];
-        int sum[][] = new int[row][col];
+        int[][] sum =new int[row][col];
         for(int x = 0; x<row ;x++){
             for(int y = 0 ;y<col ;y++)
             {
