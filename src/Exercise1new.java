@@ -1,29 +1,31 @@
+
+
 import java.util.Scanner;
 
 import static java.lang.Math.round;
 
 
-public class Exercise1 {
+public class Exercise1new {
 
-   private static double Miles(int a,double n)
-   {
-
-       if (a == 1){
-           n = n* 0.621371;
-       }
-       else if (a==2)
-       {
-           n = n/0.621371;
-       }
-       return n;
-
-   }
-    static double Pounds(int a,double n)
+    private static double Miles(boolean a,double n)
     {
-        if(a==1){
+
+        if (a ){
+            n = n* 0.621371;
+        }
+        else
+        {
+            n = n/0.621371;
+        }
+        return n;
+
+    }
+    static double Pounds(boolean a,double n)
+    {
+        if(a){
             n = n* 2.20462 ;
         }
-        else if(a== 2){
+        else {
             n = n/ 2.20462 ;
         }
 
@@ -42,56 +44,49 @@ public class Exercise1 {
     }
     public static void main(String[] args) {
 
- Scanner s = new Scanner(System.in);
+        Scanner s = new Scanner(System.in);
         System.out.println("Enter the Type of Conversion Needed");
         System.out.println("1 For Length");
         System.out.println("2 For mass");
         System.out.println("3 for Temperature");
         int data = s.nextInt();
+        boolean c = true;
+        double result;
         switch (data){
             case 1 : {
+                System.out.println("Enter the value in Km to Miles Or vice-versa");
+                double a = s.nextDouble();
                 System.out.println("Enter 1 for Km to Miles Or 0 for Miles to Km");
                 int d = s.nextInt();
-                switch(d){
-                    case 1:{
-                        System.out.println("Enter the value in Km be converted into Miles");
-                        double a = s.nextDouble();
-                        System.out.println(a +" KM In Miles : " + Miles(d,a) + " Miles");
-                    }
-                    break;
-                    case 2:
-                    {
-                        System.out.println("Enter the value in Miles be converted into KM");
-                        double a = s.nextDouble();
-                        System.out.println(a +"  Miles  In KM: " + Miles(d,a) + " Km");
-                    }
-                    break;
-                    default:{
-                        System.out.println("Invalid Input");
-                    }
+                if (d==0){
+                    c = false;
                 }
+
+                result = c? Miles(c,a):Miles(c,a);
+                if (c) {
+                    System.out.println(a + " Km In Miles : " + result + " Miles");
+                } else {
+                    System.out.println(a + " Miles In Km : " + result + " Km");
+                }
+
 
             }
             break;
             case 2: {
-                System.out.println("Enter 1 for Kg to Pounds Or 2 for Pounds to Kg");
+
+                System.out.println("Enter the value in Kg to Pounds Or vice-versa");
+                double a = s.nextDouble();
+                System.out.println("Enter 1 for Kg to Pounds Or 0 for Kg to Pounds");
                 int d = s.nextInt();
-                switch(d) {
-                    case 1: {
-                        System.out.println("Enter the value in Kg be converted into Pounds");
-                        double a = s.nextDouble();
-                        System.out.println(a + " Kg In Pounds : " + Pounds(d, a) + " Pounds");
-                    }
-                    break;
-                    case 2: {
-                        System.out.println("Enter the value in Pounds be converted into Kg");
-                        double a = s.nextDouble();
-                        System.out.println(a + " Pounds In Kg: " + Pounds(d, a) + " Kg");
-                    }
-                    break;
-                    default: {
-                        System.out.println("Invalid Input");
-                    }
+                if (d==0){
+                    c = false;
+                }
+
+                result = c? Pounds(c,a):Pounds(c,a);
+                if (c) {
+                    System.out.println(a + " Kg In Pounds : " + result + " Pounds");
+                } else {
+                    System.out.println(a + " Pounds In Kg : " + result + " Pounds");
                 }}
 
 
