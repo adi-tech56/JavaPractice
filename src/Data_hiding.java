@@ -43,6 +43,6 @@ class Rectangle{
 
     }
     public double perimeter(){
-        return 2*Length*breadth;
+        return 2*(Length+breadth);
     }
 }
