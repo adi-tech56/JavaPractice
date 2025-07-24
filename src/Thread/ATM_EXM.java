@@ -1,6 +1,8 @@
 package Thread;
 
 class ATM{
+    private final static String WITHDRAW = "Withdraws";
+
  synchronized public void checkBalance(String name){
 //     synchronized (this){
      System.out.println(name + "Checking");
@@ -10,7 +12,8 @@ class ATM{
  }
  synchronized public void withDraw(String name,int ammount){
 //     synchronized (this){
-         System.out.println(name + "Withdraws" + ammount);
+     
+     System.out.println(name + WITHDRAW + ammount);
          try{Thread.sleep(1000);}catch (Exception e){}
          System.out.println("Successful");
 //     }
