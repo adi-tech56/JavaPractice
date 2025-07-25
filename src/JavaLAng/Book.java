@@ -4,4 +4,7 @@ public class Book {
     public void displayInfo() {
         System.out.println("Displaying book information.");
     }
+    public void display(){
+
+    }
 }

@@ -19,7 +19,7 @@ class customer implements Member{
 customer(String n){
     name = n;
 }
-    @Override
+//    @Override
     public void callback() {
         System.out.println("Ok I wil visit"+ name);
     }

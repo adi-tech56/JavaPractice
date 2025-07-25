@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Array_Practice {
     public static void main(String Args[]){
         int A[] = new int[4];

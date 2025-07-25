@@ -13,7 +13,7 @@ public class Method_overload {
     public static void main(String[] args) {
         System.out.println("Enter the coordinates data");
         Scanner s = new Scanner(System.in);
-        System.out.println("enter 1 for the circle and 2 for the rectangle");
+        System.out.println("enter 1 for the java.circle and 2 for the java.rectangle");
         int a = s.nextInt();
             Method_overload Area= new Method_overload();
           if (a==1)  {
