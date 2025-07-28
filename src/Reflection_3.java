@@ -1,30 +1,41 @@
-import JavaLAng.Book;
-
 import java.io.File;
 import java.lang.reflect.*;
-import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Refelction {
-    private static void method_void(Method m){
-        if(m.getReturnType() == void.class){
-            System.out.println(m.getClass() + " " +m.getName() + " " + m.getReturnType());
+public class Reflection_3 {
+    private static void method_void1(Method m,Class t){
 
+
+        try {
+
+            Method superMethod = t.getMethod(m.getName(), m.getParameterTypes());
+            if (superMethod != null && superMethod.getReturnType().isAssignableFrom(m.getReturnType())) {
+                // This indicates an override
+                System.out.println(m + "   "+"Method is overriding a superclass method." + "  "+superMethod);
+            }
+            else {    System.out.println("Method is not overriding a superclass method." + superMethod);
+
+            }
+        } catch (NoSuchMethodException e) {
+            // No method with the same signature exists in the superclass, so it's not an override.
+System.out.println("Method is not overriding a superclass method." +e);
         }
     }
-    static void class_type(Class c){
+    static void class_type1(Class c, Class t){
         Method[] f = c.getDeclaredMethods();
         for(int i = 0 ; i< f.length;i++) {
-            method_void(f[i]);
+            method_void1(f[i],t);
+            Arrays.stream(f[i].getAnnotations()).findAny();
         };
     }
-    private static void class_instance(String name) throws ClassNotFoundException {
-        System.out.println(name);
+    private static void class_instance1(String name) throws ClassNotFoundException {
+//        System.out.println(name);
 
         Class c = Class.forName(name);
-        class_type(c);
+        Class t = c.getSuperclass();
+        class_type1(c,t);
 
     }
     public static void main(String[] args) throws Exception {
@@ -32,7 +43,7 @@ public class Refelction {
 //        Class c = Book.class;
 //        class_type(c);
 
-        String packageName = "JavaLAng";
+        String packageName = "NewJava";
         String path = packageName.replace('.', '/');
         // Get a resource URL for that path
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
@@ -54,7 +65,7 @@ public class Refelction {
                 String fullClassName = packageName + "." + className;
 
 //                System.out.println(fullClassName);
-                class_instance(fullClassName);
+                class_instance1(fullClassName);
 
 //                Class<String> clazz = (Class<String>) Class.forName(fullClassName);
 
