@@ -9,7 +9,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the class name (Book, Video, Podcast):");
         String className = scanner.nextLine();
-        String className1 = "JavaLAng."+className;
+        String className1 = "JavaLAng." + className;
         System.out.println("Enter the method name (e.g., displayInfo, play):");
         String methodName = scanner.nextLine();
         Book b = new Book();
