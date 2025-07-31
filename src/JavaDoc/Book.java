@@ -5,7 +5,7 @@
 package JavaDoc;
 
 /**
- * Class for Library Book
+ * Class for Exercise.Library Book
  */
 
 public class Book {

@@ -28,13 +28,15 @@ customer(String n){
 
 public class Interface_example {
     public static void main(String[] args) {
-        store s = new store();
-        customer c1 = new customer("John");
-        customer c2 = new customer("Mickkel");
-        customer c3 = new customer("Hiro");
-        s.register(c1);
-        s.register(c2);
-        s.register(c3);
-        s.inviteSale();
+        Member m = new customer("Ram");
+        m.callback();
+//        store s = new store();
+//        customer c1 = new customer("John");
+//        customer c2 = new customer("Mickkel");
+//        customer c3 = new customer("Hiro");
+//        s.register(c1);
+//        s.register(c2);
+//        s.register(c3);
+//        s.inviteSale();
     }
 }

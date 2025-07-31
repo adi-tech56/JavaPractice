@@ -9,6 +9,7 @@ public class Map1 {
 
         tm.put(4, "G");
         tm.put(6, "F");
+        tm.compute(1,(k,v)->v+"J");
         System.out.println(tm);
 //        System.out.println(tm.ceilingEntry(5).getValue());//Gives the value of the nearest greater key value error if greater value not there
 //        System.out.println(tm.ceilingEntry(5));
