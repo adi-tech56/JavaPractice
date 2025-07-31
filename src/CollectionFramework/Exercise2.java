@@ -24,12 +24,13 @@ class Account implements Serializable {
 }
 
 public class Exercise2 {
+
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         Account acc = null;
         HashMap<String, Account> hm = new HashMap<>();
         try {
-            FileInputStream fis = new FileInputStream("/home/adishree@id.argusoft.com/Desktop/Java Tutorial/Example.txt");
+            FileInputStream fis = new FileInputStream("/home/adishree@id.argusoft.com/Desktop/Java Tutorial/Example2.txt");
             ObjectInputStream ois = new ObjectInputStream(fis);
             int count = ois.readInt();
             for (int i = 0; i < count; i++) {
@@ -42,7 +43,7 @@ public class Exercise2 {
             ois.close();
 
         } catch (Exception e) {
-
+            System.out.println(e);
         }
         FileOutputStream fos = new FileOutputStream("/home/adishree@id.argusoft.com/Desktop/Java Tutorial/Example.txt");
         ObjectOutputStream os = new ObjectOutputStream(fos);
@@ -50,55 +51,74 @@ public class Exercise2 {
         int choice;
         String accno, name;
         double balance;
-        do {
-            System.out.println("1.Create Account");
-            System.out.println("2.Delete Account");
-            System.out.println("3.View Account");
-            System.out.println("4.View all Accounts");
-            System.out.println("5.Save Accounts");
-            System.out.println("6.Exit");
-            System.out.println("Enter your choice");
-            choice = sc.nextInt();
-            sc.nextLine();
-            switch (choice) {
-                case 1:
-                    System.out.println("Enter details of accno,name balance");
-                    accno = sc.nextLine();
-                    name = sc.nextLine();
-                    balance = sc.nextDouble();
-                    acc = new Account(accno, name, balance);
-                    hm.put(accno, acc);
-                    System.out.println("Account Created for" + name);
-                    break;
-                case 2:
-                    System.out.println("Enter Acccno");
+        Boolean exception = false;
+
+        while (true) {
+            try {
+                do {
+                    System.out.println("1.Create Account");
+                    System.out.println("2.Delete Account");
+                    System.out.println("3.View Account");
+                    System.out.println("4.View all Accounts");
+                    System.out.println("5.Save Accounts");
+                    System.out.println("6.Exit");
+                    System.out.println("Enter your choice");
+                    choice = sc.nextInt();
                     sc.nextLine();
-                    accno = sc.nextLine();
-                    hm.remove(accno);
-                    break;
-                case 3:
-                    System.out.println("Enter accno");
-                    accno = sc.nextLine();
-                    acc = hm.get(accno);
-                    System.out.println(acc);
-                    break;
-                case 4:
-                    for (Account a : hm.values()) {
-                        System.out.println(a);
+
+                    switch (choice) {
+                        case 1:
+                            System.out.println("Enter details of accno,name balance");
+                            accno = sc.nextLine();
+                            name = sc.nextLine();
+                            balance = sc.nextDouble();
+                            acc = new Account(accno, name, balance);
+                            hm.put(accno, acc);
+                            System.out.println("Account Created for" + name);
+                            break;
+                        case 2:
+                            System.out.println("Enter Acccno");
+                            sc.nextLine();
+                            accno = sc.nextLine();
+                            hm.remove(accno);
+                            break;
+                        case 3:
+                            System.out.println("Enter accno");
+                            accno = sc.nextLine();
+                            acc = hm.get(accno);
+                            System.out.println(acc);
+                            break;
+                        case 4:
+                            for (Account a : hm.values()) {
+                                System.out.println(a);
+                            }
+                            break;
+                        case 5:
+                        case 6:
+                            os.writeInt(hm.size());
+                            for (Account a : hm.values())
+                                os.writeObject(a);
+
+                            os.close();
+                            os.flush();
+                            fos.close();
+                            System.exit(0);
                     }
-                    break;
-                case 5:
-                case 6:os.writeInt(hm.size());
-                       for(Account a:hm.values())
-                           os.writeObject(a);
 
+                }
+                while (choice != 6);
+
+            } catch (Exception e) {
+                System.out.println(e);
+//                exception = true;
             }
-
+            System.out.println(exception);
         }
-        while(choice !=6);
-        os.close();
-        os.flush();
-        fos.close();
+
+//
+//        os.close();
+//        os.flush();
+//        fos.close();
     }
 
-    }
+}
