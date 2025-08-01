@@ -51,10 +51,7 @@ public class Exercise2 {
         int choice;
         String accno, name;
         double balance;
-        Boolean exception = false;
 
-        while (true) {
-            try {
                 do {
                     System.out.println("1.Create Account");
                     System.out.println("2.Delete Account");
@@ -63,9 +60,16 @@ public class Exercise2 {
                     System.out.println("5.Save Accounts");
                     System.out.println("6.Exit");
                     System.out.println("Enter your choice");
-                    choice = sc.nextInt();
-                    sc.nextLine();
-
+                    try {
+                        choice = sc.nextInt();
+                        sc.nextLine();
+                    } catch (Exception e){
+                        System.out.println(e);
+                        System.out.println("Enter your choice");
+                        sc.nextLine();
+                        choice = sc.nextInt();
+                        sc.nextLine();
+                    };
                     switch (choice) {
                         case 1:
                             System.out.println("Enter details of accno,name balance");
@@ -108,17 +112,6 @@ public class Exercise2 {
                 }
                 while (choice != 6);
 
-            } catch (Exception e) {
-                System.out.println(e);
-//                exception = true;
-            }
-            System.out.println(exception);
-        }
-
-//
-//        os.close();
-//        os.flush();
-//        fos.close();
     }
 
 }
