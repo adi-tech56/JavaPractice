@@ -317,16 +317,8 @@ public class LibraryNew {
                 case 2: {
                     // if user specific
                     boolean err1 = true;
-//                    Scanner s1 = new Scanner(System.in);
+
                     String memberId = null;
-//                    try {
-//                        System.out.println("Enter your MemberId");
-//                        memberId = s1.nextLine();
-//                    } catch (Exception e) {
-//                        System.out.println("Enter valid Id");
-//                        System.out.println("Enter your MemberId");
-//                        memberId = s1.nextLine();
-//                    }
                     try {
                         Scanner s = new Scanner(System.in);
                         System.out.println("Enter your MemberId");
@@ -358,7 +350,8 @@ public class LibraryNew {
                     if (foundMemberOptional.isPresent()) {
                         Member member = foundMemberOptional.get();
                         System.out.println("Member with Id: " + member.getMemberId() + ", ID: " + member.getName());
-                        String enter1 = "I";
+//                        int enter1= 1 ;
+                        String enter1 = null;
                         do {
 
                             boolean err2 = true;
@@ -373,7 +366,7 @@ public class LibraryNew {
                                 while (err2 == true) {
                                     try {
                                         Scanner s1 = new Scanner(System.in);
-                                        System.out.println("Enter I for Issue, R for Return, B to show borrowed books and E to exit");
+                                        System.out.println("Enter 1 for Issue, 2 for Return, 3to show borrowed books and 0 to exit");
                                         enter1 = s1.nextLine();
                                         err2 = false;
                                     } catch (Exception er) {
@@ -381,22 +374,21 @@ public class LibraryNew {
                                     }
 
                                 }
-
-
                             }
-//                            System.out.println("Enter I for Issue, R for Return, B to show borrowed books and E to exit");
-//                            enter1 = s1.nextLine();
+                            String finalEnter1= enter1;
 
-                            if (enter1 == "I") {
+
+                            if (finalEnter1.equals("I")) {
                                 bookIssue(member);
-                            } else if (enter1 == "R") {
+                            } else if (finalEnter1.equals("R")) {
                                 bookReturn(member);
-                            } else if (enter1 == "B") {
+                            } else if (finalEnter1.equals("B")) {
                                 showBorrowedBooks(member);
-                            } else if (enter1 != "E") {
+                            } else if (!finalEnter1.equals("E")) {
                                 System.out.println("enter the valid input");
                             }
-                        } while (enter1 != "E");
+
+                        } while (!enter1.equals("E"));
                     } else {
                         System.out.println("Member does not exist!");
                     }
@@ -410,13 +402,6 @@ public class LibraryNew {
 
 
         }
-
-
-        // check validity of user
-        // ask user for action -> show account/ return / bookIssue
-
-        // if return -> show borrowed books then ask bookId and validate bookId and return trans
-        // if show -> display
 
     }
 
